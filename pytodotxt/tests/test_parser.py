@@ -90,19 +90,19 @@ def test_parse_populates_multiple_contexts():
 def test_parse_populates_completed():
     line = "x 1910-10-10 is done."
     artifacts = parse(line)
-    assert artifacts['completed'] == (True)
+    assert artifacts['completed'] == True
 
 def test_parse_doesnt_add_incomplete():
     line = "(A) Do this first!"
     artifacts = parse(line)
-    assert artifacts['completed'] == None
+    assert artifacts['completed'] == False
 
 def test_parse_adds_priorities():
     line = "(A) Do this first!"
     artifacts = parse(line)
-    assert artifacts['priority'] == ('(A)')
+    assert artifacts['priority'] == '(A)'
 
 def test_parse_no_priority():
     line = "Do this first!"
     artifacts = parse(line)
-    assert artifacts['priority'] == None
+    assert artifacts['priority'] == ''

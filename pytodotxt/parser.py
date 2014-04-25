@@ -5,17 +5,8 @@ def parse(line):
     artifacts = {}
     artifacts['projects'] = match_projects(line)
     artifacts['contexts'] = match_contexts(line)
-    artifacts['priority'] = None
-    artifacts['completed'] = None
-
-    priority = match_priority(line)
-
-    if priority:
-        artifacts['priority'] = (priority)
-
-    completed = match_completed(line)
-    if completed:
-        artifacts['completed'] = (completed)
+    artifacts['priority'] = match_priority(line)
+    artifacts['completed'] = match_completed(line)
 
     return artifacts
 
@@ -50,4 +41,3 @@ def match_completed(line):
     if re.match("^x \d{4}-\d{2}-\d{2}", line):
         return True
     return False
-
